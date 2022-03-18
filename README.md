@@ -1,3 +1,3 @@
 ## FFW assignment
 
-You can check out a real demo through this link =>
+I have published this project to Netlify but they blocked http request.
