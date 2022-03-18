@@ -6,7 +6,11 @@ import { fontAction } from "../../store/font/action";
 const MyFontsContainer = ({ data }) => {
   const dispatch = useDispatch();
 
-  const handleClick = (fontId) => {
+  const handleClick = (fontId, event) => {
+    if (event !== undefined && event.key !== "Enter") {
+      return;
+    }
+
     dispatch(fontAction.setSelectedFont(fontId));
   };
 
@@ -17,6 +21,10 @@ const MyFontsContainer = ({ data }) => {
   return (
     <div className="lg:flex lg:flex-row lg:items-start lg:justify-between md:justify-between sm:flex sm:flex-column sm:justify-between">
       <div
+        tabIndex="0"
+        role="button"
+        aria-pressed="mixed"
+        onKeyDown={(event) => handleClick(data.fonts.content[0].id, event)}
         onClick={() => handleClick(data.fonts.content[0].id)}
         className={`md:flex md:flex-col lg-flex lg:flex-col cursor-pointer ${setOpacity(
           data.fonts.content[0].id
@@ -30,11 +38,15 @@ const MyFontsContainer = ({ data }) => {
       <div>
         {data.fonts.content.slice(1).map((font, index) => (
           <div
+            tabIndex="0"
+            role="button"
+            aria-pressed="mixed"
             key={font.id + index}
             className={`flex flex-column mb-6 cursor-pointer ${setOpacity(
               font.id
             )}`}
             onClick={() => handleClick(font.id)}
+            onKeyDown={(event) => handleClick(font.id, event)}
           >
             <Font id={font.id} size="small" font={font} />
             <div className="flex flex-column items-center justify-center ml-2 max-w-[68%]">
