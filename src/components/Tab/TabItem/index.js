@@ -7,9 +7,9 @@ const TabItem = ({ id, title, activeTab, setActiveTab }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`px-4 font-bold text-orange-600 uppercase ${
-        id === activeTab ? "text-gray-400" : ""
-      }`}
+      className={`${
+        id === activeTab ? "text-gray-400" : "text-orange-600"
+      } px-4 font-bold uppercase `}
     >
       {title}
     </button>

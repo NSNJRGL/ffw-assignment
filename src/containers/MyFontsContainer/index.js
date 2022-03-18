@@ -23,7 +23,7 @@ const MyFontsContainer = ({ data }) => {
         )}`}
       >
         <Font size="big" font={data.fonts.content[0]} />
-        <div className="w-32 h-32 mt-4">
+        <div className="w-36 h-36 mt-4">
           <Typography title={data.fonts.content[0].label} />
         </div>
       </div>
